@@ -1,0 +1,15 @@
+{
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "watch": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "main": "index.js",
+  "keywords": [],
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
