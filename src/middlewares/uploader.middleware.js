@@ -7,13 +7,13 @@ const uploader = (type = "image") => {
     destination: (req, file, cb) => {
       let dirPath = "./public/uploads";
       if (!fs.existsSync(dirPath)) {
-        fs.mkdirSync(dirPath), { recursive: true }; // recursive helps to create the multi-level folders.
+        fs.mkdirSync(dirPath, { recursive: true }); // recursive helps to create the multi-level folders.
       }
       cb(null, dirPath); // null => pass if no error | dirPath: Create your folder.
     },
     filename: (req, file, cb) => {
-      const filename = Date.now() + "-" + file.originalname;
-      cb(null, filename); // null => pass if no error | filename: save your filename (eg: 179039234.jpg)
+      const fileName = Date.now() + "-" + file.originalname;
+      cb(null, fileName); // null => pass if no error | filename: save your filename (eg: 179039234.jpg)
     },
   });
 
@@ -41,7 +41,7 @@ const uploader = (type = "image") => {
   return multer({
     storage: mystorage,
     fileFilter: validateFileType,
-    limit: {
+    limits: {
       fileSize: maxfileSize,
     },
   });

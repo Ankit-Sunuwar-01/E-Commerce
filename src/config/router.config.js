@@ -1,3 +1,4 @@
+const authRouter = require("../module/auth/auth.router");
 const router = require("express").Router();
 
 // prefix => /api/v1/
@@ -9,5 +10,8 @@ router.get("/", (req, res, next) => {
     options: null,
   });
 });
+
+// module router
+router.use("/auth", authRouter);
 
 module.exports = router;

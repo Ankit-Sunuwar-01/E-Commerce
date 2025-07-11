@@ -7,6 +7,10 @@ const router = require("./router.config");
 app.use(express.json());
 // x-www-form-urlencoded
 app.use(express.urlencoded());
+
+//static middleware
+app.use("/assets", express.static("./public/uploads/"));
+
 //form-data
 
 //mounting or loading
@@ -26,7 +30,7 @@ app.use((req, res, next) => {
 // Error handling middleware
 //mathi ko next ({}) yo tala ko "error" ma aaye ra basxa.
 app.use((error, req, res, next) => {
-  //console.log("garbage Collector: ", error)
+  console.log("garbage Collector: ", error);
   let statusCode = error.code || 500;
   let details = error.details || null;
   let msg = error.message || "Internal Server Error";
