@@ -1,5 +1,5 @@
 const fileUploadSvc = require("../../service/fileupload.service");
-
+const authMailSvc = require("../auth/auth.mailer");
 class AuthController {
   registerUser = async (req, res, next) => {
     try {
@@ -8,6 +8,10 @@ class AuthController {
       //const files = req.files //array
 
       //db storge
+
+      //SMTP Server
+      await authMailSvc.notifyUserRegistration(data);
+
       res.json({
         data: { file, data },
         message: "Regiser Success",
