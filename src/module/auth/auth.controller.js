@@ -1,11 +1,11 @@
+const fileUploadSvc = require("../../service/fileupload.service");
+
 class AuthController {
-  registerUser = (req, res, next) => {
+  registerUser = async (req, res, next) => {
     try {
       const data = req.body;
-      const file = req.file; // single
+      const file = await fileUploadSvc.uploadFile(req.file.path, "/users");
       //const files = req.files //array
-      console.log("BODY:", req.body);
-      console.log("FILE:", req.file);
 
       //db storge
       res.json({
